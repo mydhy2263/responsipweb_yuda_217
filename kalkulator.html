@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Kalkulator</title>
+	<script type="text/javascript">
+		var input = '';
+		var output = '';
+		var num = [];
+		var ans;
+		function masukan(digit){
+			num.push(digit);
+			if(num.length != 1){
+				input = '';
+				document.getElementById('layar').innerHTML = input;		
+			}
+			for(i=0; i<num.length ; i++){
+				input = input + num[i];				
+			}
+		document.getElementById('layar').innerHTML = input;			
+		}
+		
+		function hasil(){
+			document.getElementById('layar').innerHTML = '';
+			for(i=0; i<num.length ; i++){
+				output += num[i];						
+			}
+			ans = eval(output);	
+			document.getElementById('layar').innerHTML = ans;		
+			while(num.length > 0){
+		    	num.pop();				
+			}
+			num.push(ans.toString());			
+		}
+		function hapuslayar(){
+			document.getElementById('layar').innerHTML = '';
+			while(num.length > 0){
+		    	num.pop();				
+			}
+			input ='';	
+			output ='';
+		}
+	</script>
+</head>
+<body>
+	<form>
+		<table align="center" border="1" width="15%" bgcolor="lightblue">
+			<tr>
+				<td colspan="4" id="layar" height="25"><input type="text" name="teks" value="" ></td>
+			</tr>
+			<tr><td><input type="button" name="v7" value="7" onclick="masukan('7')"></td>
+				<td><input type="button" name="v8" value="8" onclick="masukan('8')"></td>
+				<td><input type="button" name="v9" value="9" onclick="masukan('9')"></td>
+				<td><input type="button" name="vx" value="x" onclick="masukan('*')"></td></tr>
+			<tr><td><input type="button" name="v4" value="4" onclick="masukan('4')"></td>
+				<td><input type="button" name="v5" value="5" onclick="masukan('5')"></td>
+				<td><input type="button" name="v6" value="6" onclick="masukan('6')"></td>
+				<td><input type="button" name="vmin" value="-" onclick="masukan('-')"></td></tr>
+			<tr><td><input type="button" name="v1" value="1" onclick="masukan('1')"></td>
+				<td><input type="button" name="v2" value="2" onclick="masukan('2')"></td>
+				<td><input type="button" name="v3" value="3" onclick="masukan('3')"></td>
+				<td><input type="button" name="v+" value="+" onclick="masukan('+')"></td></tr>
+			<tr><td><input type="button" name="vganti" value="+/-" onclick="masukan()"></td>
+				<td><input type="button" name="v0" value="0" onclick="masukan('0')"></td>
+				<td><input type="button" name="v." value="." onclick="masukan('.')"></td>
+				<td><input type="button" name="v/" value="/" onclick="masukan('/')"></td></tr>
+			<tr><td colspan="2" align="left"><input type="button" name="vhapus" value="AC" onclick="hapuslayar()"></td><td colspan="2" align="right" ><input type="button" name="vhasil" value="=" onclick="hasil()"></td></tr>
+		</table>
+	</form>
+
+</body>
+</html>
